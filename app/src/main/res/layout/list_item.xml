@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <!--显示字母-->
+    <TextView
+            android:id="@+id/tv_word"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#ebebeb"
+            android:gravity="center_vertical"
+
+            android:paddingLeft="?android:attr/listPreferredItemPaddingLeft" />
+
+    <!--显示联系人信息-->
+    <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="?android:attr/listPreferredItemHeightSmall"
+            android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
+            android:paddingRight="?android:attr/listPreferredItemPaddingRight"
+            android:textAppearance="?android:attr/textAppearanceListItemSmall"
+            android:paddingStart="?android:attr/listPreferredItemPaddingLeft"
+            android:paddingEnd="?android:attr/listPreferredItemPaddingRight"/>
+</LinearLayout>
