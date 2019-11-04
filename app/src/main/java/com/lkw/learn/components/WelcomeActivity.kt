@@ -26,6 +26,7 @@ class WelcomeActivity : BaseActivity() {
         setContentView(R.layout.activity_welcome)
         val i = Intent(this, MainActivity::class.java)
         startActivity(i)
+        finish()
     }
 
     private fun requestPermission(permissions: Array<String>, observer: Consumer<Boolean>) {

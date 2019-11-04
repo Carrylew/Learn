@@ -14,8 +14,8 @@ import com.lkw.learn.R;
 
 public class WordNav extends View {
     //绘制的字母列表导航字母
-    private String words[]={"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q"
-            ,"R","S","T","U","V","W","X","Y","Z","#"};
+    private String words[]={"#","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q"
+            ,"R","S","T","U","V","W","X","Y","Z"};
     private Paint wordPaint;    //字母画笔
     private Paint bgPaint;   //字母背景画笔
     private int itemWidth;    //字母的高度
@@ -43,7 +43,7 @@ public class WordNav extends View {
         wordPaint = new Paint();
         wordPaint.setTextSize(24);
         bgPaint = new Paint();
-        bgPaint.setColor(context.getResources().getColor(R.color.colorPrimaryDark));
+        bgPaint.setColor(context.getResources().getColor(R.color.colorAccent));
     }
 
     //得到画布的宽度和每一个字母的所占的高度

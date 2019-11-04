@@ -1,6 +1,7 @@
 package com.lkw.learn.views
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,12 @@ class MyAdapter (var context:Context,var list:MutableList<Person>): BaseAdapter(
         val name  = list[position].name
         holder.tv_word.text = word
         holder.tv_name.text = name
+        if(list[position].r_money > list[position].s_money){  //收 》 送
+            holder.tv_name.setTextColor(Color.GREEN)
+        }
+        if(list[position].r_money < list[position].s_money){
+            holder.tv_name.setTextColor(Color.RED)
+        }
         if (position == 0){
             holder.tv_word.visibility = View.VISIBLE
         } else{

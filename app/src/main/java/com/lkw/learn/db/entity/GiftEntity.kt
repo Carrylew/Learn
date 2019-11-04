@@ -12,7 +12,7 @@ class GiftEntity {
     @ColumnInfo(name = "name")
     var name: String = ""
     @ColumnInfo(name = "desc")
-    var desc: String = ""
+    var desc: String? = null
     @ColumnInfo(name = "r_money")
     var r_money: Int = 0
     @ColumnInfo(name = "s_money")
