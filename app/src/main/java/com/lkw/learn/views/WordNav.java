@@ -14,8 +14,8 @@ import com.lkw.learn.R;
 
 public class WordNav extends View {
     //绘制的字母列表导航字母
-    private String words[]={"#","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q"
-            ,"R","S","T","U","V","W","X","Y","Z"};
+    private String words[] = {"#", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q"
+            , "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
     private Paint wordPaint;    //字母画笔
     private Paint bgPaint;   //字母背景画笔
     private int itemWidth;    //字母的高度
@@ -31,7 +31,7 @@ public class WordNav extends View {
 
     public void setTouchIndex(String word) {
         for (int i = 0; i < words.length; i++) {
-            if (word.equals(words[i])){
+            if (word.equals(words[i])) {
                 this.touchIndex = i;
                 invalidate();
             }
@@ -42,6 +42,7 @@ public class WordNav extends View {
         super(context, attrs);
         wordPaint = new Paint();
         wordPaint.setTextSize(24);
+        wordPaint.setTextAlign(Paint.Align.CENTER);
         bgPaint = new Paint();
         bgPaint.setColor(context.getResources().getColor(R.color.colorAccent));
     }
@@ -50,8 +51,8 @@ public class WordNav extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        itemWidth = getMeasuredWidth()/3;
-        int height = getMeasuredHeight() - 50; //减去20是为了让上下留白，美观一点
+        itemWidth = getMeasuredWidth();
+        int height = getMeasuredHeight(); //减去50是为了让上下留白，美观一点
         itemHeight = height / words.length; //得到27个小字母块的高度
     }
 
@@ -65,58 +66,41 @@ public class WordNav extends View {
             int wordWidth = rect.width();
             int wordHeight = rect.height();
             //设置横坐标点文字绘制的其实位置
-            float wordX = itemWidth / 2 + itemWidth * 2 - wordWidth / 2;
+            float wordX = itemWidth / 2;
+            float wordY = itemHeight / 2 + i * itemHeight + wordHeight /2;
             //判断是不是我们按下的当前字母
             if (touchIndex == i) {
                 //绘制文字圆形背景
                 //圆心点为宽度的一半，item高度一半加上上面的高度
                 wordPaint.setColor(Color.WHITE);
-                if (this.isMoveDraw){
-                    canvas.drawCircle(itemWidth / 2 , itemHeight / 2 + i * itemHeight, 20, bgPaint);
-                    wordX = itemWidth / 2  - wordWidth / 2;
-                }else{
-                    canvas.drawCircle(itemWidth / 2  + itemWidth * 2, itemHeight / 2 + i * itemHeight, 20, bgPaint);
-                    wordX = itemWidth * 2.5f +  - wordWidth / 2;
-                }
-
+                canvas.drawCircle(itemWidth / 2, itemHeight / 2 + i * itemHeight, 20, bgPaint);
             } else {
                 wordPaint.setColor(Color.GRAY);
-                if (this.isMoveDraw){
-                    if (touchIndex == i + 1 || touchIndex == i - 1){
-                        wordX = itemWidth / 2 + itemWidth * 0.5f - wordWidth / 2;
-                    }else if (touchIndex == i + 2 || touchIndex == i - 2){
-                        wordX = itemWidth / 2 + itemWidth - wordWidth / 2;
-                    }else if (touchIndex == i + 3 || touchIndex == i - 3){
-                        wordX = itemWidth / 2 + itemWidth * 1.5f- wordWidth / 2;
-                    }
-                }
             }
-
-            float wordY = itemWidth / 2 + i * itemHeight;
-            canvas.drawText(words[i],wordX,wordY,wordPaint);
+            canvas.drawText(words[i], wordX, wordY, wordPaint);
         }
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()){
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 Rect rect = new Rect();
-                rect.left = itemWidth * 2;
+                rect.left = 0;
                 rect.top = 0;
                 rect.bottom = itemHeight * words.length;
-                rect.right = itemWidth * 3;
-                boolean b = rect.contains((int)event.getX(), (int)event.getY());
-                if (!b){
-                    return  false;
+                rect.right = itemWidth;
+                boolean b = rect.contains((int) event.getX(), (int) event.getY());
+                if (!b) {
+                    return false;
                 }
             case MotionEvent.ACTION_MOVE:
                 float y = event.getY();
-                int index = (int) (y/itemHeight);
-                if (index!=touchIndex){
+                int index = (int) (y / itemHeight);
+                if (index != touchIndex) {
                     touchIndex = index;
                 }
-                if (listener !=null &&0<=touchIndex && touchIndex<=words.length - 1){
+                if (listener != null && 0 <= touchIndex && touchIndex <= words.length - 1) {
                     listener.wordChange(words[touchIndex]);
                 }
                 this.isMoveDraw = true;
@@ -131,7 +115,7 @@ public class WordNav extends View {
         return true;
     }
 
-   public interface OnWordChangeListener {
-     void wordChange(String word);
+    public interface OnWordChangeListener {
+        void wordChange(String word);
     }
 }

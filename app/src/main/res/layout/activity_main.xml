@@ -27,10 +27,20 @@
         </ListView>
         <com.lkw.learn.views.WordNav
             android:id="@+id/wordNav"
-            android:layout_width="90dp"
+            android:layout_width="30dp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"/>
-
+        <TextView
+            android:id="@+id/tv_big"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="#8875AD4B"
+            android:layout_centerInParent="true"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="70sp"
+            android:textColor="@color/colorAccent"
+            android:visibility="gone"/>
     </RelativeLayout>
 
 

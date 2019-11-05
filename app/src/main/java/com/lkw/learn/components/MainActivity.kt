@@ -15,9 +15,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import android.view.MenuItem
+import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.DialogFragment
 
 
 class MainActivity : BaseActivity() {
@@ -25,6 +25,7 @@ class MainActivity : BaseActivity() {
     lateinit var listView: ListView
     lateinit var wordNav: WordNav
     lateinit var toolbar: Toolbar
+    lateinit var tvBig :TextView
     var list: MutableList<Person> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,7 @@ class MainActivity : BaseActivity() {
         wordNav = findViewById(R.id.wordNav)
         listView = findViewById(R.id.listView)
         toolbar = findViewById(R.id.toolBar)
+        tvBig = findViewById(R.id.tv_big)
         setSupportActionBar(toolbar)
         wordNav.setListener { word ->
             updateList(word)
@@ -55,6 +57,13 @@ class MainActivity : BaseActivity() {
             if (word == header) {
                 listView.setSelection(index)
             }
+        }
+        if(word == null){
+            tvBig.visibility = View.GONE
+            tvBig.text = ""
+        }else{
+            tvBig.visibility = View.VISIBLE
+            tvBig.text = word
         }
 
     }

@@ -102,7 +102,7 @@
         android:id="@+id/bt_sure"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:text="修改"
+        android:text="保存修改"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         style="@style/Widget.AppCompat.Button.Colored"/>
@@ -110,7 +110,7 @@
         android:id="@+id/bt_del"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:text="删除"
+        android:text="删除本条"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         style="@style/Widget.AppCompat.Button.Colored"/>
