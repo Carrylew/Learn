@@ -3,7 +3,7 @@ package com.lkw.learn.db.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.lkw.learn.db.entity.GiftEntity
+import com.lkw.learn.db.entity.FriendEntity
 import io.reactivex.Single
 import androidx.room.Update
 import androidx.room.Delete
@@ -11,21 +11,21 @@ import androidx.room.Delete
 
 
 @Dao
-interface GiftDao {
+interface FriendDao {
     companion object {
-        const val tableName = "gift"
+        const val tableName = "friend"
     }
 
     @Query("SELECT * FROM $tableName")
-    fun getList(): Single<List<GiftEntity>>
+    fun getList(): Single<List<FriendEntity>>
 
     @Insert
-    fun insert(entity: GiftEntity):Single<Long>
+    fun insert(entity: FriendEntity):Single<Long>
 
     @Delete
-    fun delete(entity: GiftEntity):Single<Int>
+    fun delete(entity: FriendEntity):Single<Int>
 
     @Update
-    fun update(entity: GiftEntity):Single<Int>
+    fun update(entity: FriendEntity):Single<Int>
 
 }

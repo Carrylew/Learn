@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:padding="16dp"
+    android:background="@drawable/radius_stroke"
+    android:gravity="center_vertical">
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="结婚"
+            android:textSize="20sp"
+            android:textColor="@color/blackText" />
+
+        <TextView
+            android:id="@+id/item_desc"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="这是一条备注信息"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/item_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:text="收到：200"
+        android:gravity="center"
+        android:layout_marginLeft="20dp"
+        android:textColor="#0f0"/>
+    <ImageButton
+        android:id="@+id/item_delete"
+        android:layout_marginLeft="20dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_delete_black_red_24dp"/>
+</LinearLayout>

@@ -6,9 +6,9 @@ import android.view.Menu
 import com.lkw.learn.R
 import com.lkw.learn.base.BaseActivity
 import com.lkw.learn.db.AppDataBase
-import com.lkw.learn.db.entity.GiftEntity
-import com.lkw.learn.views.MyAdapter
-import com.lkw.learn.views.Person
+import com.lkw.learn.db.entity.FriendEntity
+import com.lkw.learn.adapter.MyAdapter
+import com.lkw.learn.model.Person
 import com.lkw.learn.views.WordNav
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -18,6 +18,8 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
+import com.lkw.learn.components.friend.AddFriendActivity
+import com.lkw.learn.components.friend.EditFriendActivity
 
 
 class MainActivity : BaseActivity() {
@@ -37,10 +39,11 @@ class MainActivity : BaseActivity() {
         setSupportActionBar(toolbar)
         wordNav.setListener { word ->
             updateList(word)
+            updateList(word)
         }
         listView.setOnItemClickListener { parent, view, position, id ->
-            var intent = Intent(this, EditActivity::class.java)
-            intent.putExtra("data", list[position])
+            var intent = Intent(this, FriendActivity::class.java)
+            intent.putExtra("friend", list[position])
             startActivity(intent)
         }
     }
@@ -74,14 +77,14 @@ class MainActivity : BaseActivity() {
         val giftDao = database?.giftDao()
         val single = giftDao?.getList()
         single?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
-            ?.subscribe(object : SingleObserver<List<GiftEntity>> {
+            ?.subscribe(object : SingleObserver<List<FriendEntity>> {
                 override fun onSubscribe(d: Disposable) {
                 }
 
                 override fun onError(e: Throwable) {
                 }
 
-                override fun onSuccess(t: List<GiftEntity>) {
+                override fun onSuccess(t: List<FriendEntity>) {
                     if (t.isNotEmpty()) {
                         list.clear()
                         t.forEach {
@@ -123,7 +126,7 @@ class MainActivity : BaseActivity() {
         when (item.itemId) {
 
             R.id.add -> {
-                val intent = Intent(this, AddActivity::class.java)
+                val intent = Intent(this, AddFriendActivity::class.java)
                 startActivity(intent)
             }
         }

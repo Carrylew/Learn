@@ -18,7 +18,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".components.AddActivity"/>
+        <activity android:name=".components.FriendActivity"></activity>
+        <activity android:name=".components.event.EditEventActivity" />
+        <activity android:name=".components.event.AddEventActivity" />
+        <activity android:name=".components.friend.AddFriendActivity" />
         <activity android:name=".components.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,8 +29,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".components.MainActivity"/>
-        <activity android:name=".components.EditActivity"/>
+        <activity android:name=".components.MainActivity" />
+        <activity android:name=".components.friend.EditFriendActivity" />
     </application>
 
 </manifest>

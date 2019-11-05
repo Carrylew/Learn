@@ -1,4 +1,4 @@
-package com.lkw.learn.views
+package com.lkw.learn.adapter
 
 import android.content.Context
 import android.graphics.Color
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.lkw.learn.R
+import com.lkw.learn.model.Person
 
 class MyAdapter (var context:Context,var list:MutableList<Person>): BaseAdapter() {
 
@@ -34,7 +35,7 @@ class MyAdapter (var context:Context,var list:MutableList<Person>): BaseAdapter(
             holder.tv_name.setTextColor(Color.GREEN)
         }
         if(list[position].r_money < list[position].s_money){
-            holder.tv_name.setTextColor(Color.RED)
+            holder.tv_name.setTextColor(Color.YELLOW)
         }
         if (position == 0){
             holder.tv_word.visibility = View.VISIBLE

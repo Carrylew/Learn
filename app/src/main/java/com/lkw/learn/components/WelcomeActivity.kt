@@ -12,17 +12,29 @@ import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.functions.Consumer
 import java.io.*
 import java.nio.file.Path
+import androidx.core.os.HandlerCompat.postDelayed
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.os.Handler
+import android.view.Window
+import android.view.WindowManager
+
 
 class WelcomeActivity : BaseActivity() {
     var permissions = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_welcome)
         requestPermission(permissions, Consumer { aBoolean ->
             if (!aBoolean) {
                 finish()
             } else {
-                navTo()
+                Handler().postDelayed({
+                    navTo()
+                }, 1500)    //延时1.5s执行
             }
         })
     }

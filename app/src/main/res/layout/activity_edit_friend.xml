@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".components.AddActivity">
+    tools:context=".components.friend.AddFriendActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolBar"
@@ -15,7 +15,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
-        app:title="添加"/>
+        app:title="编辑好友"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,69 +28,22 @@
         <TextView
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="姓名:" />
+            android:text="@string/name" />
 
         <EditText
             android:id="@+id/et_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="请输入好友姓名"/>
+            android:hint="@string/friend_name_hint"/>
     </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text="收到金额:" />
-
-        <EditText
-            android:id="@+id/et_receive"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="请输入该好友送给你的礼金"
-            android:inputType="number"/>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text="送出金额:" />
-
-        <EditText
-            android:id="@+id/et_send"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="请输入你送给该好友的礼金"
-            android:inputType="number"/>
-    </LinearLayout>
-
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_height="40dp"
         android:gravity="center_vertical"
-        android:text="备注信息:" />
+        android:text="@string/desc" />
     <EditText
         android:id="@+id/et_desc"
         android:layout_width="match_parent"
@@ -99,12 +52,13 @@
         android:minLines="6"
         android:gravity="top"
         android:padding="2dp"
-        android:background="@drawable/stroke"/>
+        android:background="@drawable/stroke"
+        android:hint="@string/friend_desc_hint"/>
     <Button
         android:id="@+id/bt_sure"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:text="确认"
+        android:text="@string/sure"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         style="@style/Widget.AppCompat.Button.Colored"/>

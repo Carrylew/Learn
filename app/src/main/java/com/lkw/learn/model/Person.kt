@@ -1,10 +1,10 @@
-package com.lkw.learn.views
+package com.lkw.learn.model
 
-import com.lkw.learn.db.entity.GiftEntity
+import com.lkw.learn.db.entity.FriendEntity
 import net.sourceforge.pinyin4j.PinyinHelper
 import java.io.Serializable
 
-class Person(giftEntity: GiftEntity):Serializable{
+class Person(giftEntity: FriendEntity):Serializable{
     var header: String = ""
     var id: String = ""
     var name: String = ""
@@ -16,8 +16,8 @@ class Person(giftEntity: GiftEntity):Serializable{
         this.id = giftEntity.id
         this.name = giftEntity.name
         this.desc = giftEntity.desc
-        this.r_money  =giftEntity.r_money
-        this.s_money = giftEntity.s_money
+        this.r_money  =giftEntity.r_total_money
+        this.s_money = giftEntity.s_total_money
 
         var hanzi = giftEntity.name
         if("" != hanzi) {

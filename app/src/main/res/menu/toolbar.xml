@@ -4,6 +4,6 @@
     <item
         android:id="@+id/add"
         android:icon="@drawable/ic_add_black_24dp"
-        android:title="添加"
+        android:title="添加好友"
         app:showAsAction="always"/>
 </menu>
