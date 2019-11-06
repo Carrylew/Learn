@@ -24,7 +24,7 @@ abstract class AppDataBase :RoomDatabase(){
                     if (instance == null) {
                         instance = Room.databaseBuilder(
                             context.applicationContext,
-                            AppDataBase::class.java, "gift.sqlite"
+                            AppDataBase::class.java, "data.sqlite"
                         ).build()
                     }
                 }

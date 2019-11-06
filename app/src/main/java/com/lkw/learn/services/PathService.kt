@@ -5,7 +5,7 @@ import java.io.File
 
 object PathService {
     const val DIC_ROOT = "SuiSui"
-    const val FILE_DB = "gift.sqlite"
+    const val FILE_DB = "data.sqlite"
     //创建或者获取File
     private fun getOrMakeDir(file: File): File {
         return if (file.exists() || file.mkdirs()) {
