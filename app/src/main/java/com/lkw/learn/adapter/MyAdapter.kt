@@ -35,7 +35,7 @@ class MyAdapter (var context:Context,var list:MutableList<Person>): BaseAdapter(
             holder.tv_name.setTextColor(Color.GREEN)
         }
         if(list[position].r_money < list[position].s_money){
-            holder.tv_name.setTextColor(Color.YELLOW)
+            holder.tv_name.setTextColor(Color.RED)
         }
         if (position == 0){
             holder.tv_word.visibility = View.VISIBLE

@@ -20,6 +20,7 @@ import android.widget.*
 import androidx.appcompat.widget.Toolbar
 import com.lkw.learn.components.friend.AddFriendActivity
 import com.lkw.learn.components.friend.EditFriendActivity
+import java.lang.Exception
 
 
 class MainActivity : BaseActivity() {
@@ -27,7 +28,7 @@ class MainActivity : BaseActivity() {
     lateinit var listView: ListView
     lateinit var wordNav: WordNav
     lateinit var toolbar: Toolbar
-    lateinit var tvBig :TextView
+    lateinit var tvBig: TextView
     var list: MutableList<Person> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,10 +62,10 @@ class MainActivity : BaseActivity() {
                 listView.setSelection(index)
             }
         }
-        if(word == null){
+        if (word == null) {
             tvBig.visibility = View.GONE
             tvBig.text = ""
-        }else{
+        } else {
             tvBig.visibility = View.VISIBLE
             tvBig.text = word
         }
@@ -85,14 +86,14 @@ class MainActivity : BaseActivity() {
                 }
 
                 override fun onSuccess(t: List<FriendEntity>) {
+                    list.clear()
+                    t.forEach {
+                        list.add(Person(it))
+                    }
+                    list.sortWith(Comparator { o1, o2 -> o1.pinyin.compareTo(o2.pinyin) })
+                    val adapter = MyAdapter(this@MainActivity, list)
+                    listView.adapter = adapter
                     if (t.isNotEmpty()) {
-                        list.clear()
-                        t.forEach {
-                            list.add(Person(it))
-                        }
-                        list.sortWith(Comparator { o1, o2 -> o1.pinyin.compareTo(o2.pinyin) })
-                        val adapter = MyAdapter(this@MainActivity, list)
-                        listView.adapter = adapter
                         listView.setOnScrollListener(object : AbsListView.OnScrollListener {
                             override fun onScroll(
                                 view: AbsListView?,
@@ -100,7 +101,12 @@ class MainActivity : BaseActivity() {
                                 visibleItemCount: Int,
                                 totalItemCount: Int
                             ) {
-                                wordNav.setTouchIndex(list[firstVisibleItem].header)
+                                try {
+                                    wordNav.setTouchIndex(list[firstVisibleItem].header)
+                                } catch (e: Exception) {
+
+                                }
+
                             }
 
                             override fun onScrollStateChanged(
@@ -111,7 +117,6 @@ class MainActivity : BaseActivity() {
 
                         })
                     }
-
                 }
 
             })

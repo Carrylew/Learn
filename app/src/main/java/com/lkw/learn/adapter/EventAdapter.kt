@@ -37,9 +37,17 @@ class EventAdapter (var context:Context, var list:MutableList<Event>): BaseAdapt
             view = convertView
             holder = convertView.tag as ViewHolder
         }
-        val title  = "结婚"
-        val desc  = "婚礼纪赠送的"
-        val money = "收到：200"
+        val title  = list[position].title
+        val desc  = list[position].desc
+        var money = "-"
+        if (list[position].s_money!=0){
+            money = "送出：${list[position].s_money}"
+            holder.tv_money.setTextColor(Color.RED)
+        }else if (list[position].r_money!=0){
+            money = "收到：${list[position].r_money}"
+            holder.tv_money.setTextColor(Color.GREEN)
+        }
+
 
         holder.tv_title.text = title
         holder.tv_desc.text = desc
