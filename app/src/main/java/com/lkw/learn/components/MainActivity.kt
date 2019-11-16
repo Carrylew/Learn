@@ -17,9 +17,9 @@ import io.reactivex.schedulers.Schedulers
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import com.lkw.learn.components.friend.AddFriendActivity
-import com.lkw.learn.components.friend.EditFriendActivity
 import java.lang.Exception
 
 
@@ -29,14 +29,19 @@ class MainActivity : BaseActivity() {
     lateinit var wordNav: WordNav
     lateinit var toolbar: Toolbar
     lateinit var tvBig: TextView
+    lateinit var searchView: SearchView
+    lateinit var root:LinearLayout
     var list: MutableList<Person> = ArrayList()
+    var keyword:String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         wordNav = findViewById(R.id.wordNav)
         listView = findViewById(R.id.listView)
+        searchView = findViewById(R.id.search_view)
         toolbar = findViewById(R.id.toolBar)
         tvBig = findViewById(R.id.tv_big)
+        root = findViewById(R.id.root)
         setSupportActionBar(toolbar)
         wordNav.setListener { word ->
             updateList(word)
@@ -47,11 +52,29 @@ class MainActivity : BaseActivity() {
             intent.putExtra("friend", list[position])
             startActivity(intent)
         }
+        initSearch()
+    }
+
+    fun initSearch() {
+        //搜索框文字变化监听
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                keyword = newText
+                query()
+                return false
+            }
+
+        })
     }
 
     override fun onResume() {
         super.onResume()
         query()
+        root.requestFocus()
     }
 
     private fun updateList(word: String?) {
@@ -76,7 +99,8 @@ class MainActivity : BaseActivity() {
     fun query() {
         val database = AppDataBase.getDatabase(this)
         val giftDao = database?.giftDao()
-        val single = giftDao?.getList()
+        var key = "%${this.keyword}%"
+        val single = giftDao?.getList(key)
         single?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
             ?.subscribe(object : SingleObserver<List<FriendEntity>> {
                 override fun onSubscribe(d: Disposable) {
@@ -92,6 +116,7 @@ class MainActivity : BaseActivity() {
                     }
                     list.sortWith(Comparator { o1, o2 -> o1.pinyin.compareTo(o2.pinyin) })
                     val adapter = MyAdapter(this@MainActivity, list)
+
                     listView.adapter = adapter
                     if (t.isNotEmpty()) {
                         listView.setOnScrollListener(object : AbsListView.OnScrollListener {

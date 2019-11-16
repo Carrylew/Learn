@@ -45,7 +45,7 @@ class EventAdapter (var context:Context, var list:MutableList<Event>): BaseAdapt
             holder.tv_money.setTextColor(Color.RED)
         }else if (list[position].r_money!=0){
             money = "收到：${list[position].r_money}"
-            holder.tv_money.setTextColor(Color.GREEN)
+            holder.tv_money.setTextColor(Color.parseColor("#80D540"))
         }
 
 

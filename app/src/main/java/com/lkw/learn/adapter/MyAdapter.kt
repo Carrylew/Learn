@@ -32,7 +32,7 @@ class MyAdapter (var context:Context,var list:MutableList<Person>): BaseAdapter(
         holder.tv_word.text = word
         holder.tv_name.text = name
         if(list[position].r_money > list[position].s_money){  //收 》 送
-            holder.tv_name.setTextColor(Color.GREEN)
+            holder.tv_name.setTextColor(Color.parseColor("#80D540"))
         }
         if(list[position].r_money < list[position].s_money){
             holder.tv_name.setTextColor(Color.RED)

@@ -16,8 +16,8 @@ interface FriendDao {
         const val tableName = "friend"
     }
 
-    @Query("SELECT * FROM $tableName")
-    fun getList(): Single<List<FriendEntity>>
+    @Query("SELECT * FROM $tableName where name like :keyword")
+    fun getList(keyword:String): Single<List<FriendEntity>>
 
     @Query("SELECT * FROM $tableName where id =:id limit 1")
     fun getFriendById(id :String): Single<List<FriendEntity>>

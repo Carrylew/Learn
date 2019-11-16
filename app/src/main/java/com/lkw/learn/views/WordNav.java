@@ -41,7 +41,7 @@ public class WordNav extends View {
     public WordNav(Context context, AttributeSet attrs) {
         super(context, attrs);
         wordPaint = new Paint();
-        wordPaint.setTextSize(24);
+        wordPaint.setTextSize(28);
         wordPaint.setTextAlign(Paint.Align.CENTER);
         bgPaint = new Paint();
         bgPaint.setColor(context.getResources().getColor(R.color.colorAccent));

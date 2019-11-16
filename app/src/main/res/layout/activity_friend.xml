@@ -84,7 +84,7 @@
             android:layout_weight="1"
             android:text="200"
             android:textSize="18sp"
-            android:textColor="#0f0" />
+            android:textColor="#80D540" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
