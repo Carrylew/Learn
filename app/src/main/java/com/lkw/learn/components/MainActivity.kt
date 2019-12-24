@@ -159,6 +159,10 @@ class MainActivity : BaseActivity() {
                 val intent = Intent(this, AddFriendActivity::class.java)
                 startActivity(intent)
             }
+            R.id.statistics ->{
+                val intent = Intent(this, StatisticsActivity::class.java)
+                startActivity(intent)
+            }
         }
         return true
     }

@@ -8,21 +8,26 @@ import io.reactivex.Single
 import androidx.room.Update
 import androidx.room.Delete
 import com.lkw.learn.db.entity.EventEntity
+import com.lkw.learn.model.SumModel
 
 @Dao
 interface EventDao {
     companion object {
         const val tableName = "event"
     }
+
     @Insert
-    fun insert(entity: EventEntity):Single<Long>
+    fun insert(entity: EventEntity): Single<Long>
 
     @Query("SELECT * FROM $tableName where friend_id = :id")
-    fun getListByFriendId(id:String): Single<List<EventEntity>>
+    fun getListByFriendId(id: String): Single<List<EventEntity>>
 
     @Delete
-    fun delete(entity: EventEntity):Single<Int>
+    fun delete(entity: EventEntity): Single<Int>
 
     @Query("DELETE FROM $tableName where friend_id = :id")
-    fun delete(id:String):Single<Int>
+    fun delete(id: String): Single<Int>
+
+    @Query("SELECT sum(s_money) as sTotal,sum(r_money) as rTotal  from $tableName")
+    fun statistics(): Single<List<SumModel>>
 }

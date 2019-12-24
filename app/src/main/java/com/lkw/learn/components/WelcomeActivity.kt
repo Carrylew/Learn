@@ -2,7 +2,6 @@ package com.lkw.learn.components
 
 import android.Manifest
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.lkw.learn.R
@@ -11,11 +10,6 @@ import com.lkw.learn.services.PathService
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.functions.Consumer
 import java.io.*
-import java.nio.file.Path
-import androidx.core.os.HandlerCompat.postDelayed
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Handler
 import android.view.Window
 import android.view.WindowManager

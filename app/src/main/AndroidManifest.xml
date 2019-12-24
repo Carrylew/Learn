@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".components.FriendActivity"></activity>
+        <activity android:name=".components.StatisticsActivity"></activity>
+        <activity android:name=".components.FriendActivity" />
         <activity android:name=".components.event.EditEventActivity" />
         <activity android:name=".components.event.AddEventActivity" />
         <activity android:name=".components.friend.AddFriendActivity" />
